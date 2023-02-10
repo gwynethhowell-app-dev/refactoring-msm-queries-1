@@ -13,4 +13,17 @@
 #  director_id :integer
 #
 class Movie < ApplicationRecord
+
+ def director
+  dir_id = self.director_id
+  matching_result = Director.where({ :id => dir_id })
+  first_result = matching_result.at(0)
+  return first_result
+  end
+  def characters
+  my_id = self.id
+  matching_rows = Character.where({ :movie_id => my_id})
+  return matching_rows
+  end
+
 end
